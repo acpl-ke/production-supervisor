@@ -1,0 +1,10 @@
+# API
+api/bin/
+api/obj/
+api/appsettings.json
+.vs/
+
+# Web
+web/node_modules/
+web/dist/
+*.local
