@@ -30,6 +30,8 @@ public sealed class JobCardDto
     public string Date { get; set; } = "";
     public string Item { get; set; } = "";
     public decimal Quantity { get; set; }
+    public int WaitingCount { get; set; }
+    public int UnderProcessCount { get; set; }
 }
 
 public sealed class BatchDto
@@ -38,6 +40,35 @@ public sealed class BatchDto
     public string Item { get; set; } = "";
     public decimal Quantity { get; set; }
     public string Stage { get; set; } = "";
+}
+
+public sealed class LabourDetailsDto
+{
+    public string Date { get; set; } = "";
+    public int PresentCount { get; set; }
+    public int UnassignedCount { get; set; }
+    public List<LabourPersonDto> Present { get; set; } = new();
+    public List<LabourPersonDto> Unassigned { get; set; } = new();
+    public List<LabourGroupDto> Groups { get; set; } = new();
+}
+
+public sealed class LabourGroupDto
+{
+    public string Name { get; set; } = "";
+    public int Assigned { get; set; }
+    public int? Required { get; set; }
+    public List<LabourPersonDto> Labour { get; set; } = new();
+}
+
+public sealed class LabourPersonDto
+{
+    public string EmployeeId { get; set; } = "";
+    public string Name { get; set; } = "";
+    public string Ssl { get; set; } = "";
+    public string Group { get; set; } = "";
+    public string PortalUser { get; set; } = "";
+    public bool Unassigned { get; set; }
+    public string Status { get; set; } = "";
 }
 
 public sealed class JobBatchesDto

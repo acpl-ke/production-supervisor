@@ -36,7 +36,8 @@ export default defineConfig({
   plugins: [react(), serveAppConfig()],
   server: {
     host: webUrl.hostname,
-    port: Number(webUrl.port) || 5173,
+    port: Number(webUrl.port) || 4444,
+    strictPort: true,
     proxy: {
       '/api': {
         target: appConfig.apiUrl,

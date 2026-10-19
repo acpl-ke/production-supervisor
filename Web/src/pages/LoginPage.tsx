@@ -17,7 +17,7 @@ export function LoginPage() {
   const [busy, setBusy] = useState(false)
 
   useEffect(() => {
-    document.title = 'Login – IGI Cable Production'
+    document.title = 'Login – IGI Production Supervisor Production'
   }, [])
 
   if (session) return <Navigate to="/menu" replace />
@@ -49,10 +49,7 @@ export function LoginPage() {
   return (
     <Screen>
       <div className="hero">
-        <div className="brand">
-          <div className="logo logo-lg">LOGO</div>
-          <div className="brand-name">IGI Cable</div>
-        </div>
+        <img className="logo logo-lg" src="/igi-logo.png" alt="IGI Production Supervisor" />
         <div className="hero-copy">
           <div className="hero-title">Production Supervisor</div>
           <div className="hero-text">Track job cards and batches on the shop floor.</div>

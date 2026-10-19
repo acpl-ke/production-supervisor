@@ -7,4 +7,5 @@ public interface IProductionRepository
     Task<LoginResponse?> LoginAsync(LoginRequest request, CancellationToken cancellationToken);
     Task<IReadOnlyList<JobCardDto>> GetDriveJobsAsync(CancellationToken cancellationToken);
     Task<JobBatchesDto?> GetJobBatchesAsync(int jbcNoId, int itemSpecId, CancellationToken cancellationToken);
+    Task<LabourDetailsDto> GetLabourDetailsAsync(DateTime attendanceDate, CancellationToken cancellationToken);
 }

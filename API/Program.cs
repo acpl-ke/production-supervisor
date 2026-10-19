@@ -15,7 +15,12 @@ if (string.IsNullOrWhiteSpace(apiUrl) || string.IsNullOrWhiteSpace(webUrl))
     throw new InvalidOperationException("apiUrl and webUrl must be set in config.json.");
 }
 
-builder.WebHost.UseUrls(apiUrl);
+var hostedByIis = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("APP_POOL_ID"))
+    || !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("ASPNETCORE_PORT"));
+if (!hostedByIis)
+{
+    builder.WebHost.UseUrls(apiUrl);
+}
 
 var webOrigin = new Uri(webUrl).GetLeftPart(UriPartial.Authority);
 builder.Services.AddCors(options =>
@@ -50,7 +55,10 @@ app.UseExceptionHandler(errorApp =>
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseCors("WebClient");
+app.UseDefaultFiles();
+app.UseStaticFiles();
 app.UseAuthorization();
 app.MapControllers();
+app.MapFallbackToFile("index.html");
 
 app.Run();

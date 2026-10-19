@@ -39,6 +39,17 @@ export function DriveIcon() {
   )
 }
 
+export function LabourIcon() {
+  return (
+    <Icon width="28" height="28" stroke="#1f4e79" strokeWidth="1.8">
+      <circle cx="9" cy="8" r="2.4" />
+      <path d="M4.2 18.2c.7-2.6 2.6-3.8 4.8-3.8s4.1 1.2 4.8 3.8" />
+      <circle cx="16.2" cy="9.2" r="2" />
+      <path d="M14.2 18.2c.4-2 1.8-3 3.2-3 1.5 0 2.8 1 3.2 3" />
+    </Icon>
+  )
+}
+
 export function RefreshIcon() {
   return (
     <Icon width="20" height="20" strokeWidth="2">

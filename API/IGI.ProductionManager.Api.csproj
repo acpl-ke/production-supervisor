@@ -16,4 +16,16 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <Target Name="PublishWebApp" AfterTargets="ComputeFilesToPublish">
+    <Exec WorkingDirectory="$(MSBuildProjectDirectory)\..\web" Command="npm run build" />
+    <ItemGroup>
+      <_WebDist Include="$(MSBuildProjectDirectory)\..\web\dist\**\*" />
+      <ResolvedFileToPublish Include="@(_WebDist->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>wwwroot\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
 </Project>

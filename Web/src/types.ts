@@ -16,6 +16,8 @@ export type JobCard = {
   date: string
   item: string
   quantity: number
+  waitingCount: number
+  underProcessCount: number
 }
 
 export type Batch = {
@@ -40,4 +42,30 @@ export type JobBatches = {
 
 export type RememberedLogin = {
   userId: string
+}
+
+export type LabourPerson = {
+  employeeId: string
+  name: string
+  ssl: string
+  group: string
+  portalUser: string
+  unassigned: boolean
+  status: string
+}
+
+export type LabourGroup = {
+  name: string
+  assigned: number
+  required: number | null
+  labour: LabourPerson[]
+}
+
+export type LabourDetails = {
+  date: string
+  presentCount: number
+  unassignedCount: number
+  present: LabourPerson[]
+  unassigned: LabourPerson[]
+  groups: LabourGroup[]
 }

@@ -1,4 +1,4 @@
-import type { JobBatches, JobCard, LoginRequest, Session } from '../types'
+import type { JobBatches, JobCard, LabourDetails, LoginRequest, Session } from '../types'
 
 type AppConfig = {
   apiUrl: string
@@ -55,5 +55,10 @@ export const productionApi = {
 
   getBatches(srno: number, itemSpecId: number): Promise<JobBatches> {
     return request<JobBatches>(`/api/jobs/${srno}/${itemSpecId}/batches`)
+  },
+
+  getLabour(date?: string): Promise<LabourDetails> {
+    const query = date ? `?date=${encodeURIComponent(date)}` : ''
+    return request<LabourDetails>(`/api/labour${query}`)
   },
 }

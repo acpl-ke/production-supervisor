@@ -12,7 +12,7 @@ export function DrivePage() {
   const [refreshing, setRefreshing] = useState(false)
 
   useEffect(() => {
-    document.title = 'Drive for Production – IGI Cable'
+    document.title = 'Drive for Production – IGI Production Supervisor'
   }, [])
 
   async function load() {
@@ -50,6 +50,7 @@ export function DrivePage() {
       <TitleHeader title="Drive for Production" backTo="/menu" onRefresh={() => void refresh()} refreshing={refreshing} />
       <main className="page stack page-pad">
         <div className="hint">
+          {jobs !== null ? <span className="hint-count">{jobs.length} No of </span> : null}
           Jobs marked <b>Enable Drive for Production</b>
         </div>
         <label className="sr-only" htmlFor="q">
@@ -83,10 +84,12 @@ export function DrivePage() {
             </div>
             <div className="job-actions">
               <Link className="btn-wait" to={`/jobs/${job.srno}/${job.itemSpecId}/waiting`}>
-                Waiting for Process
+                Waiting
+                <span className="pill pill-wait">{job.waitingCount}</span>
               </Link>
               <Link className="btn-go" to={`/jobs/${job.srno}/${job.itemSpecId}/under-process`}>
                 Under Process
+                <span className="pill pill-on">{job.underProcessCount}</span>
               </Link>
             </div>
           </article>

@@ -11,10 +11,7 @@ export function BrandHeader() {
   const { signOut } = useAuth()
   return (
     <header className="topbar topbar-brand">
-      <div className="brand">
-        <div className="logo" />
-        <div className="brand-name">IGI Cable</div>
-      </div>
+      <img className="logo" src="/igi-logo.png" alt="IGI Production Supervisor" />
       <Link to="/" className="btn-logout" onClick={signOut}>
         Logout
       </Link>
@@ -35,7 +32,7 @@ export function TitleHeader({
 }) {
   return (
     <header className="topbar">
-      <Link to={backTo} className="btn-icon" aria-label="Back to menu">
+      <Link to={backTo} className="btn-icon" aria-label="Back">
         <BackIcon />
       </Link>
       <div className="topbar-title">{title}</div>

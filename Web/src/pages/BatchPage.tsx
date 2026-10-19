@@ -68,18 +68,18 @@ export function BatchPage({ mode }: { mode: BatchMode }) {
       <main className="page stack batch-main">
         <nav className="tabs" aria-label="Batch status">
           <Link
-            to={`${base}/under-process`}
-            className={mode === 'under-process' ? 'tab tab-on' : 'tab'}
-            aria-current={mode === 'under-process' ? 'page' : undefined}
-          >
-            Under Process <span className={mode === 'under-process' ? 'pill pill-on' : 'pill pill-off'}>{underCount}</span>
-          </Link>
-          <Link
             to={`${base}/waiting`}
             className={mode === 'waiting' ? 'tab tab-on-wait' : 'tab'}
             aria-current={mode === 'waiting' ? 'page' : undefined}
           >
             Waiting <span className={mode === 'waiting' ? 'pill pill-on-wait' : 'pill pill-off'}>{waitingCount}</span>
+          </Link>
+          <Link
+            to={`${base}/under-process`}
+            className={mode === 'under-process' ? 'tab tab-on' : 'tab'}
+            aria-current={mode === 'under-process' ? 'page' : undefined}
+          >
+            Under Process <span className={mode === 'under-process' ? 'pill pill-on' : 'pill pill-off'}>{underCount}</span>
           </Link>
         </nav>
         {error ? <p className="error-text">{error}</p> : null}

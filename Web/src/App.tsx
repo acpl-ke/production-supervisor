@@ -4,6 +4,7 @@ import { useAuth } from './auth/AuthContext'
 import { BatchPage } from './pages/BatchPage'
 import { DrivePage } from './pages/DrivePage'
 import { LoginPage } from './pages/LoginPage'
+import { LabourListPage, LabourPage } from './pages/LabourPage'
 import { MenuPage } from './pages/MenuPage'
 
 function RequireAuth({ children }: { children: ReactNode }) {
@@ -21,6 +22,38 @@ export default function App() {
         element={
           <RequireAuth>
             <MenuPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/labour"
+        element={
+          <RequireAuth>
+            <LabourPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/labour/present"
+        element={
+          <RequireAuth>
+            <LabourListPage mode="present" />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/labour/unassigned"
+        element={
+          <RequireAuth>
+            <LabourListPage mode="unassigned" />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/labour/group/:groupName"
+        element={
+          <RequireAuth>
+            <LabourListPage mode="group" />
           </RequireAuth>
         }
       />
